@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -25,6 +25,7 @@ import {
 import { Details } from './hours/Details';
 import Badge from '@material-ui/core/Badge';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { UserContext } from './hooks/UserContext';
 
 
 const drawerWidth = 240;
@@ -149,6 +150,8 @@ export const SideBar = ({history}) => {
         history.push('/login');
     }
 
+    const { user } = useContext(UserContext);
+
     return (
         <Router>
             <div className={classes.root}>
@@ -166,6 +169,9 @@ export const SideBar = ({history}) => {
                         </IconButton>
                         <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
                             Registro de Horas
+                        </Typography>
+                        <Typography component="p" color="inherit">
+                            Bienvenido { user.email}
                         </Typography>
                         <IconButton color="inherit" onClick={handleLogout}>
                             <Badge color="secondary">

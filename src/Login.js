@@ -15,6 +15,8 @@ import { useForm } from './hooks/useForm';
 import { validateEmail } from './utils/validations';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
+import { useContext } from 'react';
+import { UserContext } from './hooks/UserContext';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -50,6 +52,8 @@ const useStyles = makeStyles((theme) => ({
 
 export const Login = ({ history }) => {
 
+  const { setUser } = useContext(UserContext);
+
   const [formValues, handleInputChange] = useForm({
     email: '',
     password: ''
@@ -63,6 +67,10 @@ export const Login = ({ history }) => {
       NotificationManager.warning('Email Incorrecto')
     } else {
       history.push('/dashboard')
+      setUser({
+        email: email,
+        password: password
+      })
     }
 
   }

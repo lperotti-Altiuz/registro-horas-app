@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     BrowserRouter as Router,
     Switch,
     Route,
     Redirect
 } from "react-router-dom";
+import { UserContext } from "./hooks/UserContext";
 import { Login } from "./Login";
 import { SideBar } from "./SideBar";
 
+
+
 export const RouterApp = () => {
+    const [user, setUser] = useState({});
     return (
+        <UserContext.Provider value={{user,setUser}}>
         <Router>
             <div>
                 <Switch>
@@ -20,5 +25,7 @@ export const RouterApp = () => {
                 </Switch>
             </div>
         </Router>
+        </UserContext.Provider>
+
     )
 }
