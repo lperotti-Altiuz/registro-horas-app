@@ -1,43 +1,48 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Logo from '../src/assets/company_logo.png';
-import AltiuzBackGround from '../src/assets/altiuz.jpg';
-import { useForm } from './hooks/useForm';
-import { validateEmail } from './utils/validations';
-import {NotificationContainer, NotificationManager} from 'react-notifications';
-import 'react-notifications/lib/notifications.css';
-import { useAuthDispatch, useAuthState } from './context/context';
-import { loginUser } from './context/actions';
+import React from "react";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import Link from "@material-ui/core/Link";
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import Logo from "../src/assets/company_logo.png";
+import AltiuzBackGround from "../src/assets/altiuz.jpg";
+import { useForm } from "./hooks/useForm";
+import { validateEmail } from "./utils/validations";
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
+import "react-notifications/lib/notifications.css";
+import { useAuthDispatch, useAuthState } from "./context/context";
+import { loginUser } from "./context/actions";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: '100vh',
+    height: "100vh",
   },
   image: {
     backgroundImage: `url(${AltiuzBackGround})`,
-    backgroundRepeat: 'no-repeat',
+    backgroundRepeat: "no-repeat",
     backgroundColor:
-      theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
+      theme.palette.type === "light"
+        ? theme.palette.grey[50]
+        : theme.palette.grey[900],
+    backgroundSize: "cover",
+    backgroundPosition: "center",
   },
   paper: {
     margin: theme.spacing(8, 4),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(1),
   },
   submit: {
@@ -45,16 +50,14 @@ const useStyles = makeStyles((theme) => ({
   },
   img: {
     marginBottom: 19,
-    height: 37
-  }
+    height: 37,
+  },
 }));
 
-
 export const Login = ({ history }) => {
-
   const [formValues, handleInputChange] = useForm({
-    email: '',
-    password: ''
+    email: "",
+    password: "",
   });
 
   const { email, password } = formValues;
@@ -65,15 +68,14 @@ export const Login = ({ history }) => {
   const handleLogin = async (e) => {
     e.preventDefault();
     if (!validateEmail(email)) {
-      NotificationManager.warning('Email Incorrecto')
+      NotificationManager.warning("Email Incorrecto");
     } else {
       try {
-        const response = await loginUser(dispatch, {email, password});
-        console.log(response.user);
+        const response = await loginUser(dispatch, { email, password });
         if (!response.user) return;
-        history.push('/dashboard')
+        history.push("/projects");
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
 
       // setUser({
@@ -81,8 +83,7 @@ export const Login = ({ history }) => {
       //   password: password
       // })
     }
-
-  }
+  };
 
   const classes = useStyles();
   return (
@@ -90,8 +91,6 @@ export const Login = ({ history }) => {
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-
-
         <div className={classes.paper}>
           <img src={Logo} className={classes.img} alt="Logo Altiuz" />
           <Typography component="h1" variant="h5">
@@ -152,8 +151,7 @@ export const Login = ({ history }) => {
           </form>
         </div>
       </Grid>
-      <NotificationContainer/>
+      <NotificationContainer />
     </Grid>
-    
-  )
-}
+  );
+};
