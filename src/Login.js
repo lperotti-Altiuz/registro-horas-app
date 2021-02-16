@@ -15,8 +15,8 @@ import { useForm } from './hooks/useForm';
 import { validateEmail } from './utils/validations';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
-import { useContext } from 'react';
-import { UserContext } from './hooks/UserContext';
+import { useAuthDispatch, useAuthState } from './context/context';
+import { loginUser } from './context/actions';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -52,8 +52,6 @@ const useStyles = makeStyles((theme) => ({
 
 export const Login = ({ history }) => {
 
-  const { setUser } = useContext(UserContext);
-
   const [formValues, handleInputChange] = useForm({
     email: '',
     password: ''
@@ -61,16 +59,27 @@ export const Login = ({ history }) => {
 
   const { email, password } = formValues;
 
-  const handleLogin = (e) => {
+  const dispatch = useAuthDispatch();
+  const { loading, errorMessage } = useAuthState();
+
+  const handleLogin = async (e) => {
     e.preventDefault();
     if (!validateEmail(email)) {
       NotificationManager.warning('Email Incorrecto')
     } else {
-      history.push('/dashboard')
-      setUser({
-        email: email,
-        password: password
-      })
+      try {
+        const response = await loginUser(dispatch, {email, password});
+        console.log(response.user);
+        if (!response.user) return;
+        history.push('/dashboard')
+      } catch (error) {
+        console.log(error)
+      }
+
+      // setUser({
+      //   email: email,
+      //   password: password
+      // })
     }
 
   }
@@ -100,6 +109,7 @@ export const Login = ({ history }) => {
               autoFocus
               value={email}
               onChange={handleInputChange}
+              disabled={loading}
             />
             <TextField
               variant="outlined"
@@ -112,6 +122,7 @@ export const Login = ({ history }) => {
               autoComplete="current-password"
               value={password}
               onChange={handleInputChange}
+              disabled={loading}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}

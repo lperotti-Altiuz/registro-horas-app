@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -25,7 +25,8 @@ import {
 import { Details } from './hours/Details';
 import Badge from '@material-ui/core/Badge';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import { UserContext } from './hooks/UserContext';
+import { useAuthDispatch, useAuthState } from './context/context';
+import { logout } from './context/actions';
 
 
 const drawerWidth = 240;
@@ -146,11 +147,15 @@ export const SideBar = ({history}) => {
         }
     ];
 
+    const dispatch = useAuthDispatch();
+    const userDetails = useAuthState();
+
     const handleLogout = () =>{
+        logout(dispatch);
         history.push('/login');
     }
 
-    const { user } = useContext(UserContext);
+    
 
     return (
         <Router>
@@ -171,7 +176,7 @@ export const SideBar = ({history}) => {
                             Registro de Horas
                         </Typography>
                         <Typography component="p" color="inherit">
-                            Bienvenido { user.email}
+                             Bienvenido { userDetails.user.email}
                         </Typography>
                         <IconButton color="inherit" onClick={handleLogout}>
                             <Badge color="secondary">
