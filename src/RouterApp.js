@@ -13,31 +13,34 @@ import { SideBar } from "./SideBar";
 
 const LoginContainer = () => (
   <div>
-    <Route exact path="/login" component={Login}></Route>
+    <Route path="/login" component={Login}></Route>
   </div>
+);
+
+const notFound = () => (
+  <div style={{ marginLeft: 800, marginTop: 400 }}>404</div>
 );
 
 const privateContainer = () => (
   <div>
     <SideBar />
-    <Route exact path="/details" component={Details}></Route>
-    <Route exact path="/projects" component={Projects}></Route>
-    <Route exact path="/">
-      <Redirect to="/login" />
-    </Route>
-    <Route component={notFound}></Route>
+    <Switch>
+      <Route path="/dashboard/details" component={Details}></Route>
+      <Route path="/dashboard/projects" component={Projects}></Route>
+      <Route path="/dashboard" component={Projects}></Route>
+    </Switch>
   </div>
 );
-
-const notFound = () => <div>404</div>;
 
 export const RouterApp = () => {
   return (
     <AuthProvider>
       <Router>
         <Switch>
-          <Route exact path="/login" component={LoginContainer}></Route>
+          <Route path="/login" component={LoginContainer}></Route>
           <Route path="/dashboard" component={privateContainer}></Route>
+          <Route component={notFound}></Route>
+          <Redirect exact from="/" to="/login"></Redirect>
         </Switch>
       </Router>
     </AuthProvider>

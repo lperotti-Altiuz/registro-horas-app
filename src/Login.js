@@ -73,7 +73,7 @@ export const Login = ({ history }) => {
       try {
         const response = await loginUser(dispatch, { email, password });
         if (!response.user) return;
-        history.push("/projects");
+        history.push("/dashboard/projects");
       } catch (error) {
         console.log(error);
       }
