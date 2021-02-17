@@ -39,8 +39,8 @@ export const RouterApp = () => {
         <Switch>
           <Route path="/login" component={LoginContainer}></Route>
           <Route path="/dashboard" component={privateContainer}></Route>
-          <Route component={notFound}></Route>
           <Redirect exact from="/" to="/login"></Redirect>
+          <Route component={notFound}></Route>
         </Switch>
       </Router>
     </AuthProvider>

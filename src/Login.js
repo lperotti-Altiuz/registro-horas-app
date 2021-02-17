@@ -59,6 +59,7 @@ export const Login = ({ history }) => {
     email: "",
     password: "",
   });
+  console.log(history);
 
   const { email, password } = formValues;
 
@@ -78,10 +79,6 @@ export const Login = ({ history }) => {
         console.log(error);
       }
 
-      // setUser({
-      //   email: email,
-      //   password: password
-      // })
     }
   };
 

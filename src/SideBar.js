@@ -14,7 +14,10 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import { ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import AssignmentIcon from "@material-ui/icons/Assignment";
-import { BrowserRouter as Link } from "react-router-dom";
+import {
+  Link,
+  useHistory
+} from "react-router-dom";
 import Badge from "@material-ui/core/Badge";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { useAuthDispatch, useAuthState } from "./context/context";
@@ -104,7 +107,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const SideBar = ({ history }) => {
+export const SideBar = () => {
+  const history = useHistory();
+  console.log(history);
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -116,12 +121,12 @@ export const SideBar = ({ history }) => {
 
   const routes = [
     {
-      path: "/projects",
+      path: "/dashboard/projects",
       name: "Proyectos",
     },
     {
-      path: "/details",
-      name: "Detalles de horas",
+      path: "/dashboard/details",
+      name: "Detalles",
     },
   ];
 
@@ -190,7 +195,7 @@ export const SideBar = ({ history }) => {
             <Link className={classes.link} key={index} to={route.path}>
               <ListItem button>
                 <ListItemIcon>
-                  {route.path === "/projects" ? (
+                  {route.path === "/dashboard/projects" ? (
                     <AssignmentIcon />
                   ) : (
                     <VisibilityIcon />
