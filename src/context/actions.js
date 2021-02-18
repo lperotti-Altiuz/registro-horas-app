@@ -1,3 +1,8 @@
+import {
+	NotificationManager
+} from "react-notifications";
+import "react-notifications/lib/notifications.css";
+
 const LOGIN_URL = 'https://secret-hamlet-03431.herokuapp.com';
 
 export async function loginUser(dispatch, loginPayload) {
@@ -19,11 +24,13 @@ export async function loginUser(dispatch, loginPayload) {
 		}
 
 		dispatch({ type: 'LOGIN_ERROR', error: data.errors[0] });
-		console.log(data.errors[0]);
+		// console.log(data.errors[0]);
+		NotificationManager.error(data.errors[0]);
 		return;
 	} catch (error) {
 		dispatch({ type: 'LOGIN_ERROR', error: error });
-		console.log(error);
+		// console.log(error);
+		NotificationManager.error(error);
 	}
 }
 

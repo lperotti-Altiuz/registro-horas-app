@@ -59,12 +59,13 @@ export const Login = ({ history }) => {
     email: "",
     password: "",
   });
-  console.log(history);
 
   const { email, password } = formValues;
 
   const dispatch = useAuthDispatch();
-  const { loading, errorMessage } = useAuthState();
+  const { loading } = useAuthState();
+
+  
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -76,7 +77,6 @@ export const Login = ({ history }) => {
         if (!response.user) return;
         history.push("/dashboard/projects");
       } catch (error) {
-        console.log(error);
       }
 
     }
@@ -94,6 +94,7 @@ export const Login = ({ history }) => {
             Sign in
           </Typography>
           <form className={classes.form} onSubmit={handleLogin}>
+          {/* {errorMessage ? NotificationManager.error(errorMessage) : null} */}
             <TextField
               variant="outlined"
               margin="normal"
