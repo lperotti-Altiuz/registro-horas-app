@@ -18,8 +18,9 @@ import {
   NotificationManager,
 } from "react-notifications";
 import "react-notifications/lib/notifications.css";
-import { useAuthDispatch, useAuthState } from "./context/context";
-import { loginUser } from "./context/actions";
+import { useAuthDispatch, useAuthState } from "./hooks/LoginContext";
+import { loginUser } from "./hooks/LoginActions";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -52,6 +53,9 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 19,
     height: 37,
   },
+  loading: {
+    color: 'white'
+  }
 }));
 
 export const Login = ({ history }) => {
@@ -59,6 +63,7 @@ export const Login = ({ history }) => {
     email: "",
     password: "",
   });
+
 
   const { email, password } = formValues;
 
@@ -94,7 +99,6 @@ export const Login = ({ history }) => {
             Sign in
           </Typography>
           <form className={classes.form} onSubmit={handleLogin}>
-          {/* {errorMessage ? NotificationManager.error(errorMessage) : null} */}
             <TextField
               variant="outlined"
               margin="normal"
@@ -132,7 +136,11 @@ export const Login = ({ history }) => {
               color="primary"
               className={classes.submit}
             >
-              Sign In
+              {loading && (
+            <CircularProgress size={24} className={classes.loading}/>
+          )}
+            {loading && "Cargando"}
+            {!loading && "Sign In"} 
             </Button>
             <Grid container>
               <Grid item xs>

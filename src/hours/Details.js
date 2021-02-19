@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 'flex',
   },
   rootPaper: {
-   width: '100%'
+    width: '100%'
   },
   toolbar: {
     paddingRight: 24, // keep right padding when drawer closed
@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
   },
-  containerPaper:{
+  containerPaper: {
     maxHeight: 800
   },
   fab: {
@@ -78,7 +78,13 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     height: '100vh',
-    overflow: 'auto'
+    overflow: 'auto',
+    marginLeft: 240,
+    width: `calc(100% - 240px)`,
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
   }
 }));
 

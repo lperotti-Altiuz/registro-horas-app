@@ -5,7 +5,7 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import { AuthProvider } from "./context/context";
+import { AuthProvider } from "./hooks/LoginContext";
 import { Details } from "./hours/Details";
 import { Projects } from "./hours/Projects";
 import { Login } from "./Login";
