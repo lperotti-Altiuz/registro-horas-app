@@ -8,6 +8,7 @@ import {
 import { AuthProvider } from "./hooks/LoginContext";
 import { Details } from "./hours/Details";
 import { Projects } from "./hours/Projects";
+import { Statistics } from "./hours/Statistics";
 import { Login } from "./Login";
 import { SideBar } from "./SideBar";
 
@@ -27,6 +28,7 @@ const privateContainer = () => (
     <Switch>
       <Route path="/dashboard/details" component={Details}></Route>
       <Route path="/dashboard/projects" component={Projects}></Route>
+      <Route path="/dashboard/statistics" component={Statistics}></Route>
       <Route path="/dashboard" component={Projects}></Route>
     </Switch>
   </div>

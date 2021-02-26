@@ -96,7 +96,7 @@ export const Login = ({ history }) => {
         <div className={classes.paper}>
           <img src={Logo} className={classes.img} alt="Logo Altiuz" />
           <Typography component="h1" variant="h5">
-            Sign in
+            Chronos
           </Typography>
           <form className={classes.form} onSubmit={handleLogin}>
             <TextField

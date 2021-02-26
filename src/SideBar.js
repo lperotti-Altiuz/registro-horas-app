@@ -117,7 +117,7 @@ export const SideBar = () => {
             noWrap
             className={classes.title}
           >
-            Registro de Horas
+            Chronos
           </Typography>
           <Typography component="p" color="inherit">
             Bienvenido {userDetails.user.email}
@@ -136,7 +136,6 @@ export const SideBar = () => {
         }}
       >
         <div className={classes.toolbarIcon}>
-          {/* LOGO ALTIUZ */}
           <img src={Logo} className={classes.img} alt="Logo Altiuz" />
         </div>
         <Divider />

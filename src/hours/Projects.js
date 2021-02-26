@@ -84,12 +84,6 @@ const useStyles = makeStyles((theme) => ({
         duration: theme.transitions.duration.enteringScreen,
       }),
     },
-    container: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        margin: 'auto',
-        justifyContent: 'center'
-    },
     containerProjects: {
         paddingTop: theme.spacing(4),
         paddingBottom: theme.spacing(4),
