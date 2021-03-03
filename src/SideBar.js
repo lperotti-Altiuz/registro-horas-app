@@ -21,6 +21,8 @@ import Badge from "@material-ui/core/Badge";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { useAuthDispatch, useAuthState } from "./hooks/LoginContext";
 import { logout } from "./hooks/LoginActions";
+import AssessmentIcon from '@material-ui/icons/Assessment';
+import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 
 const drawerWidth = 240;
 
@@ -82,17 +84,40 @@ const useStyles = makeStyles((theme) => ({
 export const SideBar = () => {
   const history = useHistory();
   const classes = useStyles();
-   
+
   const routes = [
     {
       path: "/dashboard/projects",
       name: "Proyectos",
+      icon: <AssignmentIcon />
     },
     {
       path: "/dashboard/details",
       name: "Detalles",
+      icon: <VisibilityIcon />
     },
   ];
+
+
+  // Rutas que se usaran para perfil admin
+  const routesAdmin = [
+    {
+      path: "/dashboard/statistics",
+      name: "Estadísticas",
+      icon: <AssessmentIcon />
+    },
+    {
+      path: "/dashboard/allprojects",
+      name: "Proyectos",
+      icon: <AssignmentIcon />
+    }, {
+      path: "/dashboard/workers",
+      name: "Trabajadores",
+      icon: <PeopleOutlineIcon />
+    }
+  ]
+
+
 
   const dispatch = useAuthDispatch();
   const userDetails = useAuthState();
@@ -140,20 +165,27 @@ export const SideBar = () => {
         </div>
         <Divider />
         <List>
-          {routes.map((route, index) => (
+          {localStorage.getItem("role") === "admin" ? (routesAdmin.map((route, index) => (
             <Link className={classes.link} key={index} to={route.path}>
               <ListItem button>
                 <ListItemIcon>
-                  {route.path === "/dashboard/projects" ? (
-                    <AssignmentIcon />
-                  ) : (
-                    <VisibilityIcon />
-                  )}
+                  {route.icon}
                 </ListItemIcon>
                 <ListItemText primary={route.name} />
               </ListItem>
             </Link>
-          ))}
+          ))) : (
+              routes.map((route, index) => (
+                <Link className={classes.link} key={index} to={route.path}>
+                  <ListItem button>
+                    <ListItemIcon>
+                      {route.icon}
+                    </ListItemIcon>
+                    <ListItemText primary={route.name} />
+                  </ListItem>
+                </Link>
+              ))
+            )}
         </List>
         <Divider />
         <List></List>

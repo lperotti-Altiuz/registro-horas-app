@@ -25,6 +25,12 @@ const useStyles = makeStyles((theme) => ({
       flexGrow: 1,
       height: '100vh',
       overflow: 'auto',
+      marginLeft: 240,
+      width: `calc(100% - 240px)`,
+      transition: theme.transitions.create(["width", "margin"], {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.enteringScreen,
+      }),
     },
     container: {
       paddingTop: theme.spacing(4),
@@ -39,6 +45,10 @@ const useStyles = makeStyles((theme) => ({
     fixedHeight: {
       height: 240,
     },
+    containerProjects: {
+      paddingTop: theme.spacing(4),
+      paddingBottom: theme.spacing(4),
+  },
   }));
 
 export const Statistics = () => {
@@ -48,7 +58,7 @@ export const Statistics = () => {
     return (
         <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
+        <Container maxWidth="lg" className={classes.containerProjects}>
           <Grid container spacing={3}>
             {/* Chart */}
             <Grid item xs={12} md={8} lg={9}>

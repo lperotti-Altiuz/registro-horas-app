@@ -17,7 +17,7 @@ import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 import IconButton from '@material-ui/core/IconButton';
-import { useCounter } from '../hooks/useCounter';
+import { useCounter } from '../../hooks/useCounter';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -64,10 +64,11 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export const FormEdit = () => {
+export const FormHour = () => {
+
   const classes = useStyles();
 
-  const { counter, increment, decrement } = useCounter(0);
+  const { counter, increment, decrement} = useCounter(0);
 
   return (
     <Container component="main" maxWidth="xs">
@@ -77,8 +78,8 @@ export const FormEdit = () => {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Editar Registro de Hora
-          </Typography>
+          Registro de Hora
+        </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
 
@@ -146,7 +147,7 @@ export const FormEdit = () => {
             className={classes.submit}
           >
             Registrar
-            </Button>
+          </Button>
         </form>
       </div>
     </Container>

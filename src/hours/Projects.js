@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
-import { ModalForm } from './ModalForm';
+import { ModalForm } from './modals/ModalForm';
 import { green } from '@material-ui/core/colors';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import AddAlarmIcon from '@material-ui/icons/AddAlarm';

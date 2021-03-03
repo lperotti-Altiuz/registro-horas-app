@@ -6,9 +6,11 @@ import {
   Redirect,
 } from "react-router-dom";
 import { AuthProvider } from "./hooks/LoginContext";
+import { AllProjects } from "./hours/AllProjects";
 import { Details } from "./hours/Details";
 import { Projects } from "./hours/Projects";
 import { Statistics } from "./hours/Statistics";
+import { Workers } from "./hours/Workers";
 import { Login } from "./Login";
 import { SideBar } from "./SideBar";
 
@@ -29,6 +31,8 @@ const privateContainer = () => (
       <Route path="/dashboard/details" component={Details}></Route>
       <Route path="/dashboard/projects" component={Projects}></Route>
       <Route path="/dashboard/statistics" component={Statistics}></Route>
+      <Route path="/dashboard/allprojects" component={AllProjects}></Route>
+      <Route path="/dashboard/workers" component={Workers}></Route>
       <Route path="/dashboard" component={Projects}></Route>
     </Switch>
   </div>

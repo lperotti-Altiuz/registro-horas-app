@@ -70,7 +70,7 @@ export const Login = ({ history }) => {
   const dispatch = useAuthDispatch();
   const { loading } = useAuthState();
 
-  
+
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -80,7 +80,13 @@ export const Login = ({ history }) => {
       try {
         const response = await loginUser(dispatch, { email, password });
         if (!response.user) return;
-        history.push("/dashboard/projects");
+        // history.push("/dashboard/projects");
+        // if solo para redirigir entre perfiles, usado como prueba
+        if (email === "nero@admin.com" && password === "admin123") {
+          localStorage.setItem('role', 'admin');
+          history.push("/dashboard/statistics");
+          // history.push("/dashboard/projects");
+        }
       } catch (error) {
       }
 
@@ -137,10 +143,10 @@ export const Login = ({ history }) => {
               className={classes.submit}
             >
               {loading && (
-            <CircularProgress size={24} className={classes.loading}/>
-          )}
-            {loading && "Cargando"}
-            {!loading && "Sign In"} 
+                <CircularProgress size={24} className={classes.loading} />
+              )}
+              {loading && "Cargando"}
+              {!loading && "Sign In"}
             </Button>
             <Grid container>
               <Grid item xs>
