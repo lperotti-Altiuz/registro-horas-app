@@ -10,7 +10,7 @@ import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
-import QueueIcon from '@material-ui/icons/Queue';
+import { ModalAssign } from './modals/ModalAssign';
 
 
 const columns = [
@@ -53,17 +53,17 @@ function createData(idproj,proyecto,cuenta, inicio, termino, estado,asignar) {
 }
 
 const rows = [
-    createData('10,000', 'BCH Plataforma', 'Banco de Chile', '05/05/2021','05/07/2021','En Preventa',<QueueIcon />),
-    createData('10,325', 'Computec Proj', 'Computec', '05/05/2021','05/07/2021','En Preventa',<QueueIcon />),
-    createData('11,250', 'Sura Proj', 'Sura', '05/05/2021','05/07/2021','Finalizado',<QueueIcon />),
-    createData('21,333', 'Nexus Proj', 'Nexus', '05/05/2021','05/07/2021','En Preventa',<QueueIcon />),
-    createData('12,633', 'CRM Altiuz', 'Altiuz', '05/05/2021','05/07/2021','Finalizado',<QueueIcon />),
-    createData('10,755', 'Altiuz Reports', 'Altiuz', '05/05/2021','05/07/2021','En Preventa',<QueueIcon />),
-    createData('11,232', 'Lo Valledor', 'Lo Valledor', '05/05/2021','05/07/2021','Finalizado',<QueueIcon />),
-    createData('10,222', 'Captación', 'Altiuz', '05/05/2021','05/07/2021','En Preventa',<QueueIcon />),
-    createData('10,422', 'Proyecto Interno', 'Altiuz', '05/05/2021','05/07/2021','Finalizado',<QueueIcon />),
-    createData('12,333', 'Proyecto Reg', 'Altiuz', '05/05/2021','05/07/2021','En Preventa',<QueueIcon />),
-    createData('11,212', 'Historial Proj', 'Altiuz', '05/05/2021','05/07/2021','En Preventa',<QueueIcon />)
+    createData('10,000', 'BCH Plataforma', 'Banco de Chile', '05/05/2021','05/07/2021','En Preventa',<ModalAssign />),
+    createData('10,325', 'Computec Proj', 'Computec', '05/05/2021','05/07/2021','En Preventa',<ModalAssign />),
+    createData('11,250', 'Sura Proj', 'Sura', '05/05/2021','05/07/2021','Finalizado',<ModalAssign />),
+    createData('21,333', 'Nexus Proj', 'Nexus', '05/05/2021','05/07/2021','En Preventa',<ModalAssign />),
+    createData('12,633', 'CRM Altiuz', 'Altiuz', '05/05/2021','05/07/2021','Finalizado',<ModalAssign />),
+    createData('10,755', 'Altiuz Reports', 'Altiuz', '05/05/2021','05/07/2021','En Preventa',<ModalAssign />),
+    createData('11,232', 'Lo Valledor', 'Lo Valledor', '05/05/2021','05/07/2021','Finalizado',<ModalAssign />),
+    createData('10,222', 'Captación', 'Altiuz', '05/05/2021','05/07/2021','En Preventa',<ModalAssign />),
+    createData('10,422', 'Proyecto Interno', 'Altiuz', '05/05/2021','05/07/2021','Finalizado',<ModalAssign />),
+    createData('12,333', 'Proyecto Reg', 'Altiuz', '05/05/2021','05/07/2021','En Preventa',<ModalAssign />),
+    createData('11,212', 'Historial Proj', 'Altiuz', '05/05/2021','05/07/2021','En Preventa',<ModalAssign />)
 ];
 
 const useStyles = makeStyles((theme) => ({
