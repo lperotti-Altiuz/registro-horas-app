@@ -41,7 +41,7 @@ const privateContainer = () => (
 export const RouterApp = () => {
   return (
     <AuthProvider>
-      <Router>
+      <Router basename="/registro-horas-app">
         <Switch>
           <Route path="/login" component={LoginContainer}></Route>
           <Route path="/dashboard" component={privateContainer}></Route>
