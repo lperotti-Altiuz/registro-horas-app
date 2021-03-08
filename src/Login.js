@@ -83,7 +83,7 @@ export const Login = ({ history }) => {
         // history.push("/dashboard/projects");
         // if solo para redirigir entre perfiles, usado como prueba
         if (email === "nero@admin.com" && password === "admin123") {
-          localStorage.setItem('role', 'admin');
+          localStorage.setItem('role', 'user');
           history.push("/dashboard/statistics");
           // history.push("/dashboard/projects");
         }
